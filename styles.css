@@ -1,18 +1,14 @@
-*{
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
+/*
+Responsive HTML Table With Pure CSS - Web Design/UI Design
 
-body{
-    height: 100vh;
-    width: 100%;
-    background-image: linear-gradient( 45deg,  rgba(26,33,64,1), #479ab8, rgba(26,33,64,1) );
-    background-size: 300% 300%;
-    animation: color 12s ease-in-out infinite;
-    align-items: center;
-  justify-content: center;
-}
+Code written by:
+👨🏻‍⚕️ Coding Design (Jeet Saru)
+
+> You can do whatever you want with the code. However if you love my content, you can **SUBSCRIBED** my YouTube Channel.
+
+🌎link: www.youtube.com/codingdesign 
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -20,26 +16,34 @@ body{
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
 @media print {
-    .table, .table__body {
-        overflow: visible;
-        height: auto !important;
-        width: auto !important;
-    }
+ .table, .table__body {
+  overflow: visible;
+  height: auto !important;
+  width: auto !important;
+ }
 }
+
+/*@page {
+    size: landscape;
+    margin: 0; 
+}*/
+
 body {
     min-height: 100vh;
-    background: url(images/html_table.jpg) center / cover;
     background-image: linear-gradient( 45deg,  rgb(181, 227, 253), #ffffff, rgb(181, 227, 253) );
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.back{
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+}
 main.table {
-    width: 82vw;
+    width: 44vw;
     height: 90vh;
     background-color: #fff5;
 
@@ -106,6 +110,7 @@ main.table {
     overflow: overlay;
 }
 
+
 .table__body::-webkit-scrollbar{
     width: 0.5rem;
     height: 0.5rem;
@@ -120,6 +125,7 @@ main.table {
 .table__body:hover::-webkit-scrollbar-thumb{ 
     visibility: visible;
 }
+
 
 table {
     width: 100%;
@@ -210,6 +216,7 @@ tbody tr.hide td img {
     background-color: #6fcaea;
 }
 
+
 @media (max-width: 1000px) {
     td:not(:first-of-type) {
         min-width: 12.1rem;
@@ -230,377 +237,99 @@ thead th span.icon-arrow {
     transition: .2s ease-in-out;
 }
 
-
 thead th:hover span.icon-arrow{
-    border: 1.4px solid #0005;
+    border: 1.4px solid #6c00bd;
+}
+
+thead th:hover {
+    color: #6c00bd;
+}
+
+thead th.active span.icon-arrow{
+    background-color: #6c00bd;
+    color: #fff;
+}
+
+thead th.asc span.icon-arrow{
     transform: rotate(180deg);
+}
+
+thead th.active,tbody td.active {
+    color: #6c00bd;
 }
 
 .export__file {
     position: relative;
+}
+
+.export__file .export__file-btn {
     display: inline-block;
-    margin-left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background: #fff6 url(images/export.png) center / 80% no-repeat;
+    border-radius: 50%;
+    transition: .2s ease-in-out;
 }
 
-.export__file-btn {
+.export__file .export__file-btn:hover { 
+    background-color: #fff;
+    transform: scale(1.15);
     cursor: pointer;
-    padding: .4rem .8rem;
-    border: none;
-    border-radius: 2rem;
-    background-color: #fff5;
-    box-shadow: 0 .1rem .4rem #0002;
 }
 
-.export__file-btn:hover {
-    background-color: #fff8;
-}
-
-.export__file-options {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #fff5;
-    padding: .4rem .8rem;
-    border-radius: 2rem;
-    box-shadow: 0 .1rem .4rem #0002;
+.export__file input {
     display: none;
 }
 
-.export__file-options label {
+.export__file .export__file-options {
+    position: absolute;
+    right: 0;
+    
+    width: 12rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    text-align: center;
+
+    opacity: 0;
+    transform: scale(.8);
+    transform-origin: top right;
+    
+    box-shadow: 0 .2rem .5rem #0004;
+    
+    transition: .2s;
+}
+
+.export__file input:checked + .export__file-options {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 100;
+}
+
+.export__file .export__file-options label{
     display: block;
-    margin-bottom: .4rem;
+    width: 100%;
+    padding: .6rem 0;
+    background-color: #f2f2f2;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    transition: .2s ease-in-out;
+}
+
+.export__file .export__file-options label:first-of-type{
+    padding: 1rem 0;
+    background-color: #86e49d !important;
+}
+
+.export__file .export__file-options label:hover{
+    transform: scale(1.05);
+    background-color: #fff;
     cursor: pointer;
 }
 
-.export__file-options label img {
-    width: 1.2rem;
-    height: 1.2rem;
-    margin-right: .4rem;
+.export__file .export__file-options img{
+    width: 2rem;
+    height: auto;
 }
-
-.export__file-options label:hover {
-    background-color: #fff8;
-}
-
-#export-file:checked ~ .export__file-options {
-    display: block;
-}
-  
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-  overflow: hidden;
-  position: relative; /* add this line */
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 36px;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  header nav {
-    background-color: #444;
-    padding: 10px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  header nav li {
-    margin-right: 20px;
-  }
-  
-  header nav a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  header nav a:hover {
-    color: #ccc;
-  }
-  
-  header .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  header .logo img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    border-radius: 50%;
-  }
-
-@keyframes color{
-    0%{
-        background-position: 0 50%;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0 50%;
-    }
-}
-
-.animate{
-    position: absolute;
-    border-radius: 5px;
-    background-color: #cfdfe2;
-    box-shadow: 100%;
-}
-
-.one{
-    left:2%;
-    width: 35px;
-    height: 35px;
-    animation: one 10s linear infinite;
-}
-
-@keyframes one{
-    0%   {opacity:10%; top:-130px;}
-    20%   {opacity:90%;}
-    40%   {opacity:10%;}
-    60%   {opacity:90%;}
-    80%   {opacity:10%;}
-    100%  {opacity:90%; top:100%; rotate: 1000deg;}
-}
-
-.two{
-    left: 5%;
-    width: 60px;
-    height: 60px;
-    animation: two 12s linear infinite;
-}
-
-@keyframes two{
-    0%   {opacity:10%; top:-500px;}
-    20%   {opacity:90%;}
-    40%   {opacity:10%;}
-    60%   {opacity:90%;}
-    80%   {opacity:10%;}
-    100%  {opacity:90%; top:100%; rotate: 360deg;}
-}
-
-.three{
-    left: 30%;
-    width: 28px;
-    height: 28px;
-    animation: three 9s linear infinite;
-}
-
-@keyframes three{
-    0%   {opacity:10%; top:-300px;}
-    20%   {opacity:90%;}
-    40%   {opacity:10%;}
-    60%   {opacity:90%;}
-    80%   {opacity:10%;}
-    100%  {opacity:90%; top:100%; rotate: 1000deg;}
-}
-
-.four{
-    left: 20%;
-    width: 70px;
-    height: 70px;
-    animation: four 20s linear infinite;
-}
-
-@keyframes four{
-    0%   {opacity:10%; top:-130px;}
-    20%   {opacity:90%;}
-    40%   {opacity:10%;}
-    60%   {opacity:90%;}
-    80%   {opacity:10%;}
-    100%  {opacity:90%; top:120%; rotate: 300deg;}
-}
-
-.five{
-    left:45%;
-    width: 45px;
-    height: 45px;
-    animation: five 11s linear infinite;
-}
-
-@keyframes five{
-    0%   {opacity:10%; top:-40px;}
-    20%   {opacity:90%;}
-    40%   {opacity:10%;}
-    60%   {opacity:90%;}
-    80%   {opacity:10%;}
-    100%  {opacity:90%; top:100%; rotate: 1000deg;}
-}
-
-.six{
-    left: 65%;
-    width: 75px;
-    height: 75px;
-    animation: six 15s linear infinite;
-}
-
-@keyframes six{
-    0%   {opacity:10%; top:-300px;}
-    20%   {opacity:90%;}
-    40%   {opacity:10%;}
-    60%   {opacity:90%;}
-    80%   {opacity:10%;}
-    100%  {opacity:90%; top:100%; rotate: 400deg;}
-}
-
-.seven{
-    left: 89%;
-    width: 50px;
-    height: 50px;
-    animation: seven 10s linear infinite;
-}
-
-@keyframes seven{
-    0%   {opacity:10%; top:-800px;}
-    20%   {opacity:90%;}
-    40%   {opacity:10%;}
-    60%   {opacity:90%;}
-    80%   {opacity:10%;}
-    100%  {opacity:90%; top:100%; rotate: 800deg;}}
-    .eight{
-        left: 74%;
-        width: 90px;
-        height: 90px;
-        animation: eight 20s linear infinite;
-    }
-    
-    @keyframes eight{
-        0%   {opacity:10%; top:-130px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:120%; rotate: 240deg;}
-    }
-    
-    .nine{
-        left:97%;
-        width: 65px;
-        height: 65px;
-        animation: nine 14s linear infinite;
-    }
-    
-    @keyframes nine{
-        0%   {opacity:10%; top:-130px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:100%; rotate: 600deg;}
-    }
-    
-    .ten{
-        left: 55%;
-        width: 60px;
-        height: 60px;
-        animation: ten 12s linear infinite;
-    }
-    
-    @keyframes ten{
-        0%   {opacity:10%; top:-130px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:100%; rotate: 360deg;}
-    }
-    
-    .eleven{
-        left: 81%;
-        width: 30px;
-        height: 30px;
-        animation: eleven 8s linear infinite;
-    }
-    
-    @keyframes eleven{
-        0%   {opacity:10%; top:-300px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:100%; rotate: 1200deg;}
-    }
-    
-    .twelve{
-        left: 26%;
-        width: 22px;
-        height: 22px;
-        animation: twelve 8s linear infinite;
-    }
-    
-    @keyframes twelve{
-        0%   {opacity:10%; top:-130px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:120%; rotate: 2000deg;}
-    }
-    
-    .thirteen{
-        left: 42%;
-        width: 40px;
-        height: 40px;
-        animation: thirteen 10s linear infinite;
-    }
-    
-    @keyframes thirteen{
-        0%   {opacity:10%; top:-500px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:100%; rotate: 1000deg;}
-    }
-    
-    .fourteen{
-        left: 58%;
-        width: 50px;
-        height: 50px;
-        animation: fourteen 12s linear infinite;
-    }
-    
-    @keyframes fourteen{
-        0%   {opacity:10%; top:-300px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:120%; rotate: 400deg;}
-    }
-    
-    .fifteen{
-        left: 71%;
-        width: 35px;
-        height: 35px;
-        animation: fifteen 9s linear infinite;
-    }
-    
-    @keyframes fifteen{
-        0%   {opacity:10%; top:-130px;}
-        20%   {opacity:90%;}
-        40%   {opacity:10%;}
-        60%   {opacity:90%;}
-        80%   {opacity:10%;}
-        100%  {opacity:90%; top:100%; rotate: 800deg;}
-    }
